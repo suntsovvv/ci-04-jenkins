@@ -399,6 +399,8 @@ ERROR: script returned exit code 1
 Finished: FAILURE
 ```
 ### 3   
+[Jenkinsfile](https://github.com/suntsovvv/vector-role/blob/master/Jenkinsfile)   
+### 4   
 
 
 
