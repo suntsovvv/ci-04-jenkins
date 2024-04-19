@@ -224,5 +224,181 @@ Build step 'Execute shell' marked build as failure
 Finished: FAILURE
 ```
 ### 2   
+```Started by user Suntsov V.V.
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on agent1 in /opt/jenkins_agent/workspace/Declarative Pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Download role from github)
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Avoid second fetch
+Checking out Revision 45a5cfe8f72858365f7f3cb4d0d2acd8a8b801f2 (refs/remotes/origin/master)
+Commit message: "Update molecule.yml"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (m_test)
+[Pipeline] sh
+Cloning repository https://github.com/suntsovvv/vector-role.git
+ > git init /opt/jenkins_agent/workspace/Declarative Pipeline # timeout=10
+Fetching upstream changes from https://github.com/suntsovvv/vector-role.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/suntsovvv/vector-role.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/suntsovvv/vector-role.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 45a5cfe8f72858365f7f3cb4d0d2acd8a8b801f2 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git checkout -b master 45a5cfe8f72858365f7f3cb4d0d2acd8a8b801f2 # timeout=10
++ molecule test
+INFO     default scenario test matrix: dependency, lint, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
+INFO     Performing prerun...
+INFO     Set ANSIBLE_LIBRARY=/home/jenkins/.cache/ansible-compat/668096/modules:/home/jenkins/.ansible/plugins/modules:/usr/share/ansible/plugins/modules
+INFO     Set ANSIBLE_COLLECTIONS_PATH=/home/jenkins/.cache/ansible-compat/668096/collections:/home/jenkins/.ansible/collections:/usr/share/ansible/collections
+INFO     Set ANSIBLE_ROLES_PATH=/home/jenkins/.cache/ansible-compat/668096/roles:/home/jenkins/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
+INFO     Using /home/jenkins/.ansible/roles/my_galaxy_namespace.my_name symlink to current repository in order to enable Ansible to find the role using its expected full name.
+INFO     Running default > dependency
+INFO     Running ansible-galaxy collection install -v --force community.docker:>=1.9.1
+WARNING  Skipping, missing the requirements file.
+WARNING  Skipping, missing the requirements file.
+INFO     Running default > lint
+WARNING: PATH altered to include /usr/bin
+WARNING  Listing 12 violation(s) that are fatal
+yaml: trailing spaces (trailing-spaces)
+handlers/main.yml:6
+
+meta-incorrect: Should change default metadata: license
+meta/main.yml:1
+
+yaml: wrong indentation: expected 4 but found 3 (indentation)
+meta/main.yml:32
+
+yaml: wrong indentation: expected 7 but found 5 (indentation)
+meta/main.yml:34
+
+yaml: wrong indentation: expected 6 but found 5 (indentation)
+tasks/main.yml:13
+
+yaml: truthy value should be one of [false, true] (truthy)
+tasks/main.yml:14
+
+risky-file-permissions: File permissions unset or incorrect
+tasks/main.yml:49 Task/Handler: Generate vector config
+
+yaml: trailing spaces (trailing-spaces)
+tasks/main.yml:50
+
+yaml: trailing spaces (trailing-spaces)
+tasks/main.yml:51
+
+yaml: too many blank lines (3 > 2) (empty-lines)
+tasks/main.yml:56
+
+yaml: trailing spaces (trailing-spaces)
+tasks/main.yml:107
+
+yaml: trailing spaces (trailing-spaces)
+tasks/main.yml:108
+
+You can skip specific rules or tags by adding them to your configuration file:
+# .ansible-lint
+warn_list:  # or 'skip_list' to silence them completely
+  - experimental  # all rules tagged as experimental
+  - meta-incorrect  # meta/main.yml default values should be changed
+  - yaml  # Violations reported by yamllint
+
+Finished with 11 failure(s), 1 warning(s) on 6 files.
+./handlers/main.yml
+  3:1       warning  comment not indented like content  (comments-indentation)
+  6:1       error    trailing spaces  (trailing-spaces)
+
+./meta/main.yml
+  1:1       warning  missing document start "---"  (document-start)
+  22:81     error    line too long (84 > 80 characters)  (line-length)
+  26:81     error    line too long (84 > 80 characters)  (line-length)
+  27:81     error    line too long (85 > 80 characters)  (line-length)
+  32:4      error    wrong indentation: expected 4 but found 3  (indentation)
+  34:6      error    wrong indentation: expected 7 but found 5  (indentation)
+  43:5      warning  comment not indented like content  (comments-indentation)
+  43:81     error    line too long (83 > 80 characters)  (line-length)
+  44:81     error    line too long (82 > 80 characters)  (line-length)
+  47:81     error    line too long (83 > 80 characters)  (line-length)
+  51:3      warning  comment not indented like content  (comments-indentation)
+  51:81     error    line too long (85 > 80 characters)  (line-length)
+
+./molecule/default/converge.yml
+  7:26      error    no new line character at the end of file  (new-line-at-end-of-file)
+
+./molecule/default/verify.yml
+  1:1       warning  missing document start "---"  (document-start)
+  14:12     error    trailing spaces  (trailing-spaces)
+  15:81     error    line too long (122 > 80 characters)  (line-length)
+  16:18     error    too many spaces before colon  (colons)
+  20:12     error    trailing spaces  (trailing-spaces)
+  22:18     error    too many spaces before colon  (colons)
+
+./molecule/tox/converge.yml
+  7:26      error    no new line character at the end of file  (new-line-at-end-of-file)
+
+./molecule/tox/molecule.yml
+  20:19     error    no new line character at the end of file  (new-line-at-end-of-file)
+
+./tasks/main.yml
+  4:81      error    line too long (106 > 80 characters)  (line-length)
+  13:6      error    wrong indentation: expected 6 but found 5  (indentation)
+  14:22     warning  truthy value should be one of [false, true]  (truthy)
+  21:81     error    line too long (105 > 80 characters)  (line-length)
+  36:81     error    line too long (106 > 80 characters)  (line-length)
+  50:28     error    trailing spaces  (trailing-spaces)
+  51:24     error    trailing spaces  (trailing-spaces)
+  56:1      error    too many blank lines (3 > 2)  (empty-lines)
+  62:81     error    line too long (112 > 80 characters)  (line-length)
+  79:81     error    line too long (111 > 80 characters)  (line-length)
+  94:81     error    line too long (112 > 80 characters)  (line-length)
+  107:30    error    trailing spaces  (trailing-spaces)
+  108:26    error    trailing spaces  (trailing-spaces)
+
+WARNING  Retrying execution failure 1 of: a n s i b l e - l i n t   . 
+ y a m l l i n t   . 
+
+CRITICAL Lint failed with error code 1
+WARNING  An error occurred during the test sequence action: 'lint'. Cleaning up.
+INFO     Running default > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running default > destroy
+INFO     Sanity checks: 'docker'
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item=centos7)
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: Wait for instance(s) deletion to complete (300 retries left).
+ok: [localhost] => (item=centos7)
+
+TASK [Delete docker networks(s)] ***********************************************
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Pruning extra files from scenario ephemeral directory
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE
+```
+### 3   
+
 
 
