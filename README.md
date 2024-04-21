@@ -644,6 +644,7 @@ localhost                  : ok=4    changed=0    unreachable=0    failed=0    s
 Finished: SUCCESS
 ```
 ### 6   
+```
 Started by user Suntsov V.V.
 [Pipeline] Start of Pipeline
 [Pipeline] node
@@ -717,6 +718,9 @@ localhost                  : ok=4    changed=0    unreachable=0    failed=0    s
 [Pipeline] End of Pipeline
 Finished: SUCCESS   
 ```
+### 7    
+[Declarative Pipeline](https://github.com/suntsovvv/vector-role/blob/master/Jenkinsfile)   
+[Scripted Pipeline](https://github.com/suntsovvv/ci-04-jenkins/blob/main/ScriptedJenkinsfile)
 
 
 
